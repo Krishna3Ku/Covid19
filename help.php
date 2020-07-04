@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title></title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style>
+    .bs-example{   margin: 30px; }
+    .accordion .fa{ margin-right: 1.5rem; }
+	#myBtn { display: none; position: fixed; bottom: 10px; right: 10px; z-index: 50;font-size: 10px; border: none;  outline: none; background-color: black; color: white;cursor:pointer;padding: 10px; border-radius: 4px;}
+    #myBtn:hover { background-color: #555;}	
+	
+	
+	@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+section {padding: 60px 0;}
+
+section .section-title {text-align: center; color: #000b5e;margin-bottom: 50px;text-transform: uppercase;}
+#footer {background:#021114 !important;}
+#footer h5{padding-left: 10px; border-left: 3px solid #eeeeee; padding-bottom: 6px; margin-bottom: 20px; color:#ffffff;}
+#footer a {color: #ffffff; text-decoration: none !important; background-color: transparent; -webkit-text-decoration-skip: objects;}
+#footer ul.social li{padding: 3px 0;}
+#footer ul.social li a i { margin-right: 5px;font-size:25px;-webkit-transition: .5s all ease;-moz-transition: .5s all ease;transition: .5s all ease;}
+#footer ul.social li:hover a i {font-size:30px;margin-top:-10px;}
+#footer ul.social li a,
+#footer ul.quick-links li a{color:#ffffff;}
+#footer ul.social li a:hover{color:#eeeeee;}
+#footer ul.quick-links li{padding: 3px 0;-webkit-transition: .5s all ease;-moz-transition: .5s all ease;transition: .5s all ease;}
+#footer ul.quick-links li:hover{padding: 3px 0;margin-left:5px;font-weight:700;}
+#footer ul.quick-links li a i{margin-right: 5px;}
+#footer ul.quick-links li:hover a i { font-weight: 700;}
+
+@media (max-width:767px){#footer h5 { padding-left: 0; border-left: transparent;padding-bottom: 0px; margin-bottom: 10px;}}
+
+</style>
+<script>
+
+    $(document).ready(function(){
+        // Add minus icon for collapse element which is open by default
+        $(".collapse.show").each(function(){
+        	$(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
+        });
+        
+        // Toggle plus minus icon on show hide of collapse element
+        $(".collapse").on('show.bs.collapse', function(){
+        	$(this).prev(".card-header").find(".fa").removeClass("fa-plus").addClass("fa-minus");
+        }).on('hide.bs.collapse', function(){
+        	$(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
+        });
+    });
+</script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-warning p-3">
+  <a class="navbar-brand pl-4 text-primary " href="index.php">Covid-19Tracker</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto pr-4 text-capitalize">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="ss.php">Covid-19</a>
+      </li>
+	  
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-danger" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Covid-19LiveCases
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item text-primary" href="world.php">WorldWide</a>
+		  <div class="dropdown-divider"></div>
+          <a class="dropdown-item text-primary" href="india1.php">India</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/events-as-they-happen">Covid-19LetestNews</a>
+		  <div class="dropdown-divider"></div>
+		  <a class="dropdown-item" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/travel-advice">TravelAdvice</a>
+		  <div class="dropdown-divider"></div>
+		  <a class="dropdown-item" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/global-research-on-novel-coronavirus-2019-ncov">Research and Guidance</a>
+		    <div class="dropdown-divider"></div>
+			  <a class="dropdown-item" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">Public Advice</a>
+		  
+        </div>
+      </li>
+	  
+	   <li class="nav-item">
+        <a class="nav-link" href="help.php">StateWiseHelpline</a>
+      </li>
+     
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<div class="my-4">
+       <h3 class="text-capitalize text-center text-success">Government Approved Testing Centers for Covid-19 in India</h3>              
+ </div>
+  <figure class="text-center">
+			      <img src="https://static.investindia.gov.in/s3fs-public/inline-images/shutterstock_1662295798_0.jpg"class="img-fluid">
+				  
+				  <h6 class="text-justify text-center">A total of 157 laboratories are gearing up to conduct testing for COVID-19. This includes both government and private labs, the official website of the ICMR showed on Friday.Of the 157 labs, 121 are government laboratories approved by the Indian Council of Medical Research for conducting tests for the deadly novel coronavirus. However,only 109 are currently operational while 12 laboratories are in the process of being operationalised.In addition to this there are 35 private labs across the country for conducting these tests.
+                  </h6>
+	</figure>	
+
+
+			   
+<div class="my-4">
+       <h3 class="text-capitalize text-center text-success">Approved and supported government laboratories Statewise In INDIA:</h3>              
+ </div>
+			   
+<div class="bs-example">
+    <div class="accordion" id="accordionExample">
+       
+          <div class="card">
+            <div class="card-header" id="heading1">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse1"><i class="fa fa-plus"></i>1-Andhra Pradesh</button> 
+				</h2>
+            </div>
+            <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 4 Government Approved Testing Centers for Covid 19 in Andhra Pradesh.</i><br>1- Sri Venkateswara Institute of Medical Sciences, Tirupati<br>2- Rangaraya Medical College, Kakinada<br>3- Sidhartha Medical College, Vijaywada<br>4- Government Medical College, Ananthpur
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading2">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse2"><i class="fa fa-plus"></i>2-Assam</button> 
+				</h2>
+            </div>
+            <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 5 Government Approved Testing Centers for Covid 19 in Assam.</i><br>1- Gauhati Medical College, Guwahati<br>2- Regional Medical Research Center, Dibrugarh<br>3- Jorhat Medical College, Jorhat<br>4- Silchar Medical College, Silchar<br>5- Fakkhruddin Ali Ahmed Medical College, Barpeta
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading3">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse3"><i class="fa fa-plus"></i>3-Bihar</button> 
+				</h2>
+            </div>
+            <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 4 Government Approved Testing Centers for Covid 19 in Bihar.</i><br>1- Rajendra Memorial Research Institute of Medical Sciences, Patna<br>2- Indira Gandhi Institute Medical Sciences, Patna<br>3- Patna Medical College, Patna<br>4- Darbhanga Medical College, Darbhanga
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading4">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse4"><i class="fa fa-plus"></i>4-Chandigarh</button> 
+				</h2>
+            </div>
+            <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 2 Government Approved Testing Centers for Covid 19 in Chandigarh</i><br>1- Post Graduate Institute of Medical Education & Research, Chandigarh<br>2- Government Medical College, Chandigarh
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading5">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse5"><i class="fa fa-plus"></i>5-Chhattisgarh</button> 
+				</h2>
+            </div>
+            <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 2 Government Approved Testing Centers for Covid 19 in Chhattisgarh</i><br>1- All India Institute of Medical Sciences, Raipur<br>2- Late Baliram Kashyap M Govt. Medical College, Jagdalpur
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading6">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse6"><i class="fa fa-plus"></i>6-Delhi</button> 
+				</h2>
+            </div>
+            <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 6 Government Approved Testing Centers for Covid 19 in Delhi</i><br>1- All India Institute Medical Sciences<br>2- Lady Hardinge Medical College<br>3- National Centre for Disease Control<br>4- Ram Manohar Lohia Hospital<br>5- Institute of Liver & Biliary Sciences<br>6- Army Hospital Research & Referral
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading7">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse7"><i class="fa fa-plus"></i>7-Gujarat</button> 
+				</h2>
+            </div>
+            <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 6 Government Approved Testing Centers for Covid 19 in Gujarat</i><br>1- BJ Medical College, Ahmedabad<br>2- MP Shah Govt Medical College, Jamnagar<br>3- Govt. Medical College, Surat<br>4- Govt. Medical College, Bhavnagar<br>5- Govt. Medical College, Vadodar<br>6- Govt. Medical College, Rajkot
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading8">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse8"><i class="fa fa-plus"></i>8-Goa</button> 
+				</h2>
+            </div>
+            <div id="collapse8" class="collapse" aria-labelledby="heading8" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 1 Government Approved Testing Centers for Covid 19 in Goa</i><br>1- Goa Medical College, Goa
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading9">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse9"><i class="fa fa-plus"></i>9-Haryana</button> 
+				</h2>
+            </div>
+            <div id="collapse9" class="collapse" aria-labelledby="heading9" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 2 Government Approved Testing Centers for Covid 19 in Haryana</i><br>1- Pt. B.D. Sharma Post Graduate Institute of Medical Sciences, Rohtak, Haryana<br>2- BPS Govt. Medical College, Sonipat
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading10">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse10"><i class="fa fa-plus"></i>10- Jammu & Kashmir</button> 
+				</h2>
+            </div>
+            <div id="collapse10" class="collapse" aria-labelledby="heading10" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 4 Government Approved Testing Centers for Covid 19 in  Jammu & Kashmir</i><br>1- Govt. Medical College, Jammu<br>2- Command Hospital (NC) Udhampur<br>3- Sher-i-Kashmir Institute of Medical Sciences, Srinagar<br>4- Govt. Medical College, Srinagar
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading11">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse11"><i class="fa fa-plus"></i>11- Himachal Pradesh</button> 
+				</h2>
+            </div>
+            <div id="collapse11" class="collapse" aria-labelledby="heading11" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 2 Government Approved Testing Centers for Covid 19 in  Himachal Pradesh</i><br>1- Indira Gandhi Medical College, Shimla<br>2- Dr. Rajendra Prasad Govt. Medical College, Tanda
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading12">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse12"><i class="fa fa-plus"></i>12- Jharkhand</button> 
+				</h2>
+            </div>
+            <div id="collapse12" class="collapse" aria-labelledby="heading12" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 2 Government Approved Testing Centers for Covid 19 in  Jharkhand</i><br>1- MGM Medical College & Hospital, Jamshedpur<br>2- Rajendra Institute of Medical Sciences, Ranchi
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading13">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse13"><i class="fa fa-plus"></i>13- Karnataka</button> 
+				</h2>
+            </div>
+            <div id="collapse13" class="collapse" aria-labelledby="heading13" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 7 Government Approved Testing Centers for Covid 19 in  Karnataka</i><br>1- Hassan Inst. of Med. Sciences, Hassan<br>2- Mysore Medical College & Research Institute, Mysore<br>3- Shivamogga Institute of Medical Sciences, Shivamogga<br>4- Command Hospital (Air Force), Bengaluru<br>5- Bangalore Medical College & Research Institute, Bengaluru<br>6- National Institute of Virology, Bangalore Field Unit, Bengaluru<br>7- Gulbarga Institute of Medical Sciences, Gulbarga
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading14">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse14"><i class="fa fa-plus"></i>14-  Kerala</button> 
+				</h2>
+            </div>
+            <div id="collapse14" class="collapse" aria-labelledby="heading14" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 10 Government Approved Testing Centers for Covid 19 in   Kerala</i><br>1- National Institute of Virology, Field Unit, Allapuzzha<br>2- Govt. Medical College, Thiruvanathapuram<br>3- Govt. Medical College, Kozhikode<br>4- Govt. Medical College, Thrissur<br>5- Rajiv Gandhi Center for Biotechnology, Thiruvanathapuram<br>6- Sree Chitra Tirunal Institute of Medical Sciences, Thiruvanathapuram<br>7- State Public Health Laboratory, Trivandrum<br>8- Inter University, Kottayam<br>9- Malabar Cancer Center, Thalassery<br>10- Central University of Kerala, Periye, Kasaragod
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading15">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse15"><i class="fa fa-plus"></i>15- Maharashtra</button> 
+				</h2>
+            </div>
+            <div id="collapse15" class="collapse" aria-labelledby="heading15" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 13 Government Approved Testing Centers for Covid 19 in  Maharashtra</i><br>1- National Institute of Virology, Pune<br>2- Seth GS Medical College & KEM Hospital, Mumbai<br>3- Kasturba Hospital for Infectious Diseases, Mumbai<br>4- National Institute of Virology Field Unit, Mumbai<br>5- Armed Forces Medical College, Pune<br>6- BJ Medical College, Pune<br>7- Indira Gandhi Govt. Medical College, Nagpur<br>8- Grant Medical College & Sir JJ Hospital, Mumbai<br>9- Govt. Medical College, Aurangabad<br>10- V. M. Government Medical College, Solapur<br>11- Haffkine Institute, Mumbai<br>12- Shree Bhausaheb Hire Govt. Medical College, Dhule<br>13- Government Medical College, Miraj
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading16">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse16"><i class="fa fa-plus"></i>16- Madhya Pradesh</button> 
+				</h2>
+            </div>
+            <div id="collapse16" class="collapse" aria-labelledby="heading16" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 4 Government Approved Testing Centers for Covid 19 in  Madhya Pradesha</i><br>1- All India Institute of Medical Sciences, Bhopal<br>2- National Institute for Research on Tribal Health, Jabalpur<br>3- Mahatma Gandhi Memorial Medical College, Indore<br>4- Gandhi Medical College, Bhopal
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading17">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse17"><i class="fa fa-plus"></i>17- Manipur</button> 
+				</h2>
+            </div>
+            <div id="collapse17" class="collapse" aria-labelledby="heading17" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 2 Government Approved Testing Centers for Covid 19 in  Manipur</i><br>1- Jawaharlal Nehru Institute of Med. Sciences, Imphal East, Manipur<br>2- Regional Institute of Medical Sciences, Imphal
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading18">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse18"><i class="fa fa-plus"></i>18- Meghalaya</button> 
+				</h2>
+            </div>
+            <div id="collapse18" class="collapse" aria-labelledby="heading18" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 1 Government Approved Testing Centers for Covid 19 in  Meghalaya</i><br>1- North Eastern Indira Gandhi Regional Institute of Health & Medical Sciences, Shillong, Meghalaya
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading19">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse19"><i class="fa fa-plus"></i>19-Odisha</button> 
+				</h2>
+            </div>
+            <div id="collapse19" class="collapse" aria-labelledby="heading19" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 3 Government Approved Testing Centers for Covid 19 in  Odisha</i><br>1- Regional Medical Research Centre, Bhubaneshwar<br>2- All India Institute of Medical Sciences, Bhubaneshwar<br>3- SCB Medical College and Hospital, Cuttack
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading20">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse20"><i class="fa fa-plus"></i>20-Puducherry</button> 
+				</h2>
+            </div>
+            <div id="collapse20" class="collapse" aria-labelledby="heading20" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 1 Government Approved Testing Centers for Covid 19 in Puducherry</i><br>1-Jawaharlal Institute of Postgraduate Medical Education & Research, Puducherry
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading21">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse21"><i class="fa fa-plus"></i>21- Punjab</button> 
+				</h2>
+            </div>
+            <div id="collapse21" class="collapse" aria-labelledby="heading21" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 2 Government Approved Testing Centers for Covid 19 in  Punjab</i><br>1-Govt. Medical College, Amritsar<br>2- Govt. Medical College, Patiala
+					</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading22">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse22"><i class="fa fa-plus"></i>22-Rajasthan </button> 
+				</h2>
+            </div>
+            <div id="collapse22" class="collapse" aria-labelledby="heading22" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 8 Government Approved Testing Centers for Covid 19 in  Rajasthan </i><br>1-Sawai Man Singh Medical College, Jaipur<br>2- Dr. Sampurnan and Medical College, Jodhpur<br>3- Jhalawar Medical College, Jhalawar<br>4- RNT Medical College, Udaipur<br>5- SP Medical College, Bikaner<br>6- All India Institute of Medical Sciences, Jodhpur<br>7- JLN Medical College, Ajmer<br>8- Govt. Medical College, Kota
+                	</p>
+                </div>
+           </div>
+        </div>
+		
+		
+		<div class="card">
+            <div class="card-header" id="heading23">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse23"><i class="fa fa-plus"></i>23- Tamil Nadu </button> 
+				</h2>
+            </div>
+            <div id="collapse23" class="collapse" aria-labelledby="heading23" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 10 Government Approved Testing Centers for Covid 19 in  Tamil Nadu </i><br>1- King Institute of Preventive Medicine & Research, Chennai<br>2- Madras Medical College, Chennai<br>3- Govt. Theni Medical College, Theni<br>4- Tirunelveli Medical College, Tirunelveli<br>5- Govt. Medical College, Thiruvarur<br>6- Kumar Mangalam Govt. Medical College, Salem<br>7- Coimbatore Medical College, Coimbatore<br>8- Govt. Medical College, Villupuram<br>9- Madurai Medical College, Madurai<br>10- K A P Viswanatham Govt. Medical College, Trichy
+                	</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading24">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse24"><i class="fa fa-plus"></i>24- Telangana </button> 
+				</h2>
+            </div>
+            <div id="collapse24" class="collapse" aria-labelledby="heading24" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 5 Government Approved Testing Centers for Covid 19 in Telangana </i><br>1-Gandhi Medical College, Secunderabad2- Osmania Medical College, Hyderabad<br>3- Sir Ronald Ross of Tropical & Communicable Diseases, Hyderabad<br>4- Nizam’s Institute of Medical Sciences, Hyderabad<br>5- Institute of Preventive Medicine, Hyderabad
+                	</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading25">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse25"><i class="fa fa-plus"></i>25- Tripura  </button> 
+				</h2>
+            </div>
+            <div id="collapse25" class="collapse" aria-labelledby="heading25" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 1 Government Approved Testing Centers for Covid 19 in Tripura  </i><br>1-Government Medical College, Agartala 
+                	</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading26">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse26"><i class="fa fa-plus"></i>26- Uttar Pradesh   </button> 
+				</h2>
+            </div>
+            <div id="collapse26" class="collapse" aria-labelledby="heading26" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 8 Government Approved Testing Centers for Covid 19 in Uttar Pradesh </i><br>1-King George Medical University, Lucknow<br>2- Institute of Medical Sciences, Banaras Hindu University, Varanasi<br>3- Jawaharlal Nehru Medical College, Aligarh<br>4- Command Hospital, Lucknow<br>5- Lala Lajpat Rai Memorial Medical College, Meerut<br>6- Sanjay Gandhi Post Graduate Institute, Lucknow<br>7- Uttar Pradesh University of Medical Sciences (Formerly Uttar Pradesh RIMS), Saifai<br>8- Regional Medical Research Centre, Gorakhpur
+                	</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading27">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse27"><i class="fa fa-plus"></i>27- Uttarakhand   </button> 
+				</h2>
+            </div>
+            <div id="collapse27" class="collapse" aria-labelledby="heading27" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 2 Government Approved Testing Centers for Covid 19 in Uttarakhand </i><br>1-Govt. Medical College, Haldwani<br>2- All India Institute of Medical Sciences, Rishikesh
+                	</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading28">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse28"><i class="fa fa-plus"></i>28- West Bengal   </button> 
+				</h2>
+            </div>
+            <div id="collapse28" class="collapse" aria-labelledby="heading28" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 5 Government Approved Testing Centers for Covid 19 in West Bengal </i><br>1-National Institute of Cholera & Enteric Diseases, Kolkata<br>2- Institute of Post Graduate Medical Education & Research, Kolkata<br>3- Midnapore Medical College, Midnapore<br>4- North Bengal Medical College, Darjeeling<br>5- School of Tropical Medicine, Kolkata
+                	</p>
+                </div>
+           </div>
+        </div>
+		
+		<div class="card">
+            <div class="card-header" id="heading29">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse29"><i class="fa fa-plus"></i>29-Andaman & Nicobar Islands   </button> 
+				</h2>
+            </div>
+            <div id="collapse29" class="collapse" aria-labelledby="heading29" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">There are 1 Government Approved Testing Centers for Covid 19 in Andaman & Nicobar Islands  </i><br>1-Regional Medical Research Centre, Port Blair
+                	</p>
+                </div>
+           </div>
+        </div>
+		
+	
+	
+	<div class="my-4">
+       <h3 class="text-capitalize text-center text-success">COVID-19 Emergency Toll Free Number State-wise Breakdown</h3>              
+ </div>
+ <h6 class="text-justify text-center">The outbreak of coronavirus in India has evidently put a strain on the lives of many people. During these testing times, the government has launched an emergency number for COVID-19 related assistance. The emergency number for COVID-19 is toll-free thus people can easily access the service and let their grievances known. Below is the emergency number for COVID-19 helpline listed state wise. 
+                  </h6>
+ 
+ <div class="card">
+            <div class="card-header" id="heading31">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse31"><i class="fa fa-plus"></i>Why is the emergency number for COVID-19 launched?  </button> 
+				</h2>
+            </div>
+            <div id="collapse31" class="collapse" aria-labelledby="heading31" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p>The emergency number for COVID-19 has been launched state-wise by the government in order to solve the queries related to the infection which people might have. Besides having individual numbers for a helpline for COVID-19 relief, a helpline Email-ID has also been issued by the government. These extensive steps have been taken to flatten the curve of the outbreak of coronavirus in India. The official COVID-19 relief helpline Email-id has been listed below - <br>E-mail - ncov2019@gmail.com
+                	</p>
+                </div>
+           </div>
+        </div>
+		
+ 
+ 
+ 
+    <div class="card">
+            <div class="card-header" id="heading30">
+                <h2 class="mb-0">
+                    <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse30"><i class="fa fa-plus"></i>Emergency number for COVID-19 - State-Wise   </button> 
+				</h2>
+            </div>
+            <div id="collapse30" class="collapse" aria-labelledby="heading30" data-parent="#accordionExample">
+                <div class="card-body bg-success text-white">
+                    <p><i class="text-warning">Central helpline number - Toll-Free: +91-11-23978046<br>All India toll-free number - 1075 </i><br>Andhra Pradesh - 0866-2410978<br><br>Arunachal Pradesh - 9436055743<br>Assam -  6913347770<br>Bihar - 104<br>Chhattisgarh - 077122-35091<br>Goa - 104<br>Gujarat - 104<br>Haryana - 8558893911<br>Himachal Pradesh -104<br>Jharkhand - 104<br>Karnataka - 104<br>Kerala -  0471-2552056<br>Madhya Pradesh -  0755-2527177<br>Maharashtra - 020-26127394<br>Manipur -  3852411668<br>Meghalaya - 108<br>Mizoram - 102<br>Nagaland - 7005539653<br>Odisha - 9439994859<br>Punjab - 104<br>Rajasthan - 0141-2225624<br>Sikkim - 104<br>Tamil Nadu - 044-29510500<br>Tripura - 0381-2315879<br>Uttarakhand - 104<br>Uttar Pradesh -18001805145<br>West Bengal - 3323412600<br>Andaman and Nicobar Islands - 03192-232102<br> Chandigarh - 9779558282<br>Dadra and Nagar Haveli and Daman & Diu - 104<br>Delhi - 011-22307154<br>Jammu - 01912520982<br>Kashmir - 01942440283<br>Ladakh - 01982256462<br>Lakshadweep - 104<br>Puducherry - 104
+                	</p>
+                </div>
+           </div>
+        </div>
+ 
+ 
+	
+  </div>
+</div>
+			   
+			   
+			   
+			   
+
+
+
+
+
+<div class="container scrolltop float-right pr-5">
+   <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up" style="font-size:24px"></i></button>
+ </div>
+
+<script>
+var mybutton = document.getElementById("myBtn");
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+<!-- Footer -->
+	<section id="footer">
+		<div class="container">
+		
+		
+			<div class="row">
+			
+				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+					<ul class="list-unstyled list-inline social text-center">
+					<h3 class="text-center text-success">Visit My another Website</h3>
+		<p class="text-center"><a  href="https://krishna3ku.github.io/KrishnaYadav/" target="_blank">1- My Portfolio</a></p>
+		<p class="text-center"><a  href="https://thejabinfo.wordpress.com/" target="_blank">2- thejabinfo.wordpress.com</a></p>
+					<h3 class="text-center text-success ">Get connected with us on social networks</h3>
+						<li class="list-inline-item"><a href="https://www.facebook.com/krishnakumar.yadav.18488169/"><i class="fa fa-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="https://twitter.com/Krishna09988033/"><i class="fa fa-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.instagram.com/krishnakumar8636"><i class="fa fa-instagram"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.linkedin.com/in/krishna-yadav-597698170/"><i class="fa fa-linkedin"></i></a></li>
+						<li class="list-inline-item"><a href="https://github.com/Krishna3Ku"><i class="fa fa-github"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.quora.com/profile/Krishna-Yadav-1295"><i class="fa fa-quora"></i></a></li>
+						
+						
+					</ul>
+				</div>
+				<hr>
+			</div>	
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+					
+					<p class="h6">© All right Reversed-<a class="text-green ml-2 text-primary" href="https://krishna3ku.github.io/KrishnaYadav/" target="_blank">Krishna Yadav</a></p>
+				</div>
+				<hr>
+			</div>	
+		</div>
+	</section>
+	<!-- ./Footer -->
+
+
+
+</body>
+</html>
